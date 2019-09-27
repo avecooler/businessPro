@@ -1,4 +1,4 @@
-package com.br.activiti;
+package com.br;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;

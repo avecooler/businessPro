@@ -1,4 +1,4 @@
-package com.br.activiti;
+package com.br;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //swagger要扫描的包路径
-                .apis(RequestHandlerSelectors.basePackage("com.br.activiti.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.br"))
                 .paths(PathSelectors.any())
                 .build();
     }

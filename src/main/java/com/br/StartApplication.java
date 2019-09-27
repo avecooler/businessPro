@@ -1,4 +1,4 @@
-package com.br.activiti;
+package com.br;
 
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.spring.boot.SecurityAutoConfiguration;
