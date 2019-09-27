@@ -1,0 +1,51 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /activiti
+
+spring:
+#  devtools:
+#    restart: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/application?characterEncoding=UTF-8
+    username: application
+    password: cq19860131?
+    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 5000
+      # 状态监控
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          log-slow-sql: true
+          slow-sql-millis: 2000
+      # 监控过滤器
+      web-stat-filter:
+        enabled: true
+        exclusions:
+          - "*.js"
+          - "*.gif"
+          - "*.jpg"
+          - "*.png"
+          - "*.css"
+          - "*.ico"
+          - "/druid/*"
+      # druid 监控页面
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: root
+        login-password: root
+  activiti:
+    check-process-definitions: false #不检查自定义processes路径
+mybatis:
+  mapper-locations: classpath:/**/*-Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
