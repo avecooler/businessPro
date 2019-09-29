@@ -20,6 +20,12 @@ public class ReqContinueProcess {
     @ApiModelProperty( value = "task id")
     private String taskId;
 
+    @ApiModelProperty( value = "任务Key")
+    private String taskKey;
+
+    @ApiModelProperty( value = "用户ID")
+    private String customerId;
+
     /*@ApiModelProperty( value = "流程所属用户")
     private String owner;*/
 

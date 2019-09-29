@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = {"com.br.shopping"} , sqlSessionTemplateRef = "serviceSqlSessionTemplate")
-public class ServiceDatabase {
+public class ServiceDatabaseConfig {
 
     @Bean(name = "serviceDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.second") // prefix值必须是application.properteis中对应属性的前缀

@@ -1,18 +1,21 @@
 package com.br.activiti.controller;
 
 import com.br.activiti.domain.ReqContinueProcess;
+import com.br.activiti.domain.RespBaseTaskInfo;
 import com.br.activiti.utils.JsonUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.IdentityLinkType;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,8 +41,14 @@ public class ProcessController {
             vars = JsonUtils.toMap(request.getSubmitInfo());
         }
 
+
+
         //执行某流程
         ProcessInstance processIns = runtimeService.startProcessInstanceByKey(request.getProcessKey(),vars);
+        if( !StringUtils.isEmpty( request.getCustomerId() )){
+            runtimeService.addUserIdentityLink(processIns.getProcessInstanceId(),request.getCustomerId(), IdentityLinkType.OWNER);
+        }
+
 
         log.info("desc process info");
         log.info("defined id: "+processIns.getProcessDefinitionId());
@@ -72,6 +81,20 @@ public class ProcessController {
 
         return "success,prcessId:"+list.get(0).getProcessInstanceId()+",taskId:"+list.get(0).getId();
     }
+
+
+    public List<RespBaseTaskInfo> queryTaskByKey(@RequestBody ReqContinueProcess request){
+        List<RespBaseTaskInfo> respList = new ArrayList<RespBaseTaskInfo>();
+        List<Task> taskList = taskService.createTaskQuery().taskOwner(request.getCustomerId()).taskDefinitionKey(request.getTaskKey()).list();
+        for(Task t : taskList){
+            RespBaseTaskInfo taskInfo  = RespBaseTaskInfo.builder().taskId(t.getId()).taskKey(t.getTaskDefinitionKey())
+                    .taskDesc(t.getDescription()).owner(t.getOwner()).build();
+            respList.add(taskInfo);
+        }
+
+        return respList;
+    }
+
 
 
 
