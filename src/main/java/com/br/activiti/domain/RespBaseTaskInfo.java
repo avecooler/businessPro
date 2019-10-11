@@ -10,4 +10,9 @@ public class RespBaseTaskInfo {
     private String taskKey;
     private String taskDesc;
     private String owner;
+    private String createTime;
+    private String assigneeId;
+    private String taskName;
+    private String proInstanceId;
+
 }

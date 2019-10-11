@@ -28,9 +28,21 @@ public class ActivitiDatasourceConfig extends AbstractProcessEngineAutoConfigura
             PlatformTransactionManager transactionManager,
             SpringAsyncExecutor springAsyncExecutor) throws IOException {
 
-        return baseSpringProcessEngineConfiguration(
+
+
+        SpringProcessEngineConfiguration springProcessEngineConfiguration = baseSpringProcessEngineConfiguration(
                 firstDataSource(),
                 transactionManager,
-                springAsyncExecutor,springJobManager());
+                springAsyncExecutor, springJobManager());
+
+
+
+//        springProcessEngineConfiguration.setAsyncExecutor();
+
+
+
+
+
+        return springProcessEngineConfiguration;
     }
 }

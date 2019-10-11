@@ -167,11 +167,12 @@
   <!-- 自定义 -->
   <insert id="mergeInto" parameterType="com.br.shopping.dao.domain.ShoppingCar" >
     insert into t_shopping_car values(
-    #{customerId,jdbcType=varchar}
-    ,#{productId,jdbcType=varchar}
-    ,#{productName,jdbcType=varchar}
-    ,#{productNum,jdbcType=numeric})
+    #{customerId,jdbcType=VARCHAR}
+    ,#{productId,jdbcType=VARCHAR}
+    ,#{productName,jdbcType=VARCHAR}
+    ,#{productNum,jdbcType=NUMERIC})
     on DUPLICATE key
-    update product_name = #{productName,jdbcType=varchar}, product_num = #{productNum,jdbcType=numeric}
+    update product_name = #{productName,jdbcType=VARCHAR}, product_num = #{productNum,jdbcType=NUMERIC}
   </insert>
+
 </mapper>

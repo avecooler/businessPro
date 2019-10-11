@@ -33,4 +33,6 @@
         <appender-ref ref="FILE" />
     </root>
 
+    <logger name="com.br.shopping.dao" level="DEBUG" />
+
 </configuration>

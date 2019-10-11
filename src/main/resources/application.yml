@@ -50,4 +50,6 @@ spring:
         login-password: root
   activiti:
     check-process-definitions: false #不检查自定义processes路径
+    async-executor-activate: true
+
 

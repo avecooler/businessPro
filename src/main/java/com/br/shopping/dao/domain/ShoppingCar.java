@@ -1,6 +1,8 @@
 package com.br.shopping.dao.domain;
 
-public class ShoppingCar {
+import java.io.Serializable;
+
+public class ShoppingCar implements Serializable {
     private String customerId;
 
     private String productId;

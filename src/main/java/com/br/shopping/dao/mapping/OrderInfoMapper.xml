@@ -109,7 +109,7 @@
       #{payAmt,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, #{payState,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.br.shopping.dao.domain.OrderInfo" >
+  <insert id="insertSelective" parameterType="com.br.shopping.dao.domain.OrderInfo" useGeneratedKeys = "true" keyProperty="orderNo">
     insert into t_order_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderNo != null" >
@@ -226,4 +226,5 @@
       pay_state = #{payState,jdbcType=CHAR}
     where order_no = #{orderNo,jdbcType=INTEGER}
   </update>
+
 </mapper>

@@ -1,8 +1,9 @@
 package com.br.shopping.dao.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderInfo {
+public class OrderInfo implements Serializable {
     private Integer orderNo;
 
     private String customerId;

@@ -35,7 +35,7 @@ public class SwaggerConfig {
                 .description("Springboot 整合Swagger2")
                 .termsOfServiceUrl("localhost:8090/activiti/")
                 .contact(new Contact("Swagger测试","localhost:8090/activiti/swagger-ui.html","baidu@qq.com"))
-                .version("1.0")
+                .version("2.0")
                 .build();
     }
 

@@ -26,6 +26,9 @@ public class ReqContinueProcess {
     @ApiModelProperty( value = "用户ID")
     private String customerId;
 
+    @ApiModelProperty( value = "操作符")
+    private String opt;
+
     /*@ApiModelProperty( value = "流程所属用户")
     private String owner;*/
 

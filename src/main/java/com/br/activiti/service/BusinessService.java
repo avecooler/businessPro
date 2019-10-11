@@ -4,6 +4,9 @@ import com.br.activiti.service.domain.Customer;
 import com.br.activiti.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.delegate.DelegateTask;
+import org.activiti.engine.delegate.TaskListener;
 import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ExecutionQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,13 @@ import java.util.Map;
 
 @Service("service1")
 @Slf4j
-public class BusinessService  {
+public class BusinessService {
 
     @Autowired
     private RuntimeService runtimeService;
+
+    @Autowired
+    private TaskService taskService;
 
 
     /**
@@ -81,7 +87,7 @@ public class BusinessService  {
         List<Execution> exeForDel = executionQuery2.startedBefore(c.getTime()).onlyProcessInstanceExecutions().list();
         for( Execution e : exeForDel){
             log.info(" need close process ins id :"+e.getProcessInstanceId());  //超过1小时的执行流强制结束
-            runtimeService.deleteProcessInstance(e.getProcessInstanceId()," after 1 not completed ， system auto closed" );
+            runtimeService.deleteProcessInstance(e.getProcessInstanceId()," after 1 hour not completed ， system auto closed" );
         }
 
 
@@ -90,4 +96,10 @@ public class BusinessService  {
     public Map<String,Object> queryProcessParam(){
         return null;
     }
+
+    public void addTenantId(String tenantId){
+
+    }
+
+
 }
